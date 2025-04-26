@@ -1,0 +1,44 @@
+Arboles B -> Estan balanceados. Todas las hojas están en el mismo nivel, a la misma profundidad.
+Es decir, la distancia de la raiz a cualquiera de las hojas del arbol es la misma.
+
+Los arboles B son multicamino: cada nodo del arbol puede tener k hijos
+
+Se construyen de manera ascendente. La raiz va a salir a partir de los nodos que tengamos en nuestro
+arbol, pues se empiezan a construir a partir de las hojas, al contrario que los arboles tradicionales.
+Eso nos va a permitir que estén balanceados a bajo costo.
+
+Orden de un arbol: determina la cantidad maxima de hijos o descendientes directos que puede tener cada
+nodo del arbol.
+
+Un nodo con X descendientes directos contiene X-1 elementos.
+
+Todos los nodos (salvo la raiz) tienen como mínimo [M/2]-1 elementos, y como máximo M-1 elementos.
+
+ej:
+program prueba;
+const
+	M = ...; // Orden del arbol.
+type
+	TDatos = record
+		codigo: longint;
+		nombre: string[50];
+	end;
+
+	TNodo = record
+		cant_datos: integer; // Me dice cuantos datos hay en el arreglo de datos.
+		datos: array[1..M-1] of TDato;
+		hijos: array[1..M] of integer; // Son integer, porque "hijos" me va a hacer referencia a las pos de los datos hijos.
+	end;
+
+	arbol = file of TNodo;
+
+Bajas: Si lo que quiero borrar está en una hoja, listo, borro. Si no está en una hoja, tengo que
+reemplazarla (pisarla) con otra clave: o con la más chica del subarbol derecho, o con la más grande
+del subarbol izquierdo, siempre y cuando cualquiera de estos tenga suficientes claves (que no se quede
+por debajo de la cantidad minima permitida).
+
+Cuando elimino la clave de una hoja, puede pasar:
+
+- Que quede por encima de la cantidad de elementos que permite. Listo, termino.
+
+- Que quede por debajo de la cantidad de elementos que permite. (Underflow)

@@ -1,0 +1,45 @@
+Bajas: Logica y Fisica
+
+Baja Logica: No borra realmente, sino que se coloca una marca de borrado indicando que el espacio
+		correspondiente puede ser utilizado para guardar nueva información.
+
+Baja Fisica: Elimina la informacion del archivo, recuperando el espacio fisico.
+
+	Ventajas: En todo momento, se administra un archivo de datos que ocupa el minimo lugar necesario.
+
+	Desventajas: Performance en los archivos que implementan esta solución.
+
+
+Tecnicas de Baja Fisica:
+
+	Generar un nuevo archivo sin copiar los datos que se desean eliminar.
+
+	Utilizar el mismo archivo de datos generando reacomodamientos que sean necesarios (solo para
+	archivos sin ordenar).
+
+Tecnica de Recuperacion de Espacio: Voy marcando los registros como borrados. Luego, se usa el proceso
+					de baja física para realizar un proceso de compactación del
+					archivo, quitando los registros marcados como eliminados.
+
+Tecnica de Reasignación de Espacio: Recupera el espacio usando lugares marcados como eliminados para el
+					ingreso de nuevos elementos al archivo (altas).
+
+
+Lista Invertida: No es una lista clásica. Es una lista que conecta elementos dentro de mi archivo.
+		Para esta tecnica, vamos a usar un registro cabecera que se ubica en la posicion 0
+		del archivo.
+
+		Consulto ese registro cabecera. Si contiene 0, no hay espacios marcados como eliminados,
+		entonces me voy al final del archivo para agregar un elemento.
+		Si contiene un valor mayor a 0, quiere decir que hay espacios marcados como eliminados
+		para reutilizar.
+
+		Al borrar, pongo en la pos 0 el indice del registro que borro, y así voy encadenando
+		posiciones, tipo armando un caminito de pos borradas desde la última hasta la primera,
+		que arranque en la pos 0.
+
+		En el registro que quiero borrar, siempre guardo lo que hay en la cabecera.
+
+		Cuando quiero insertar un nuevo elemento, guardo en la pos que me indica la cabecera,
+		y además tengo que cambiar a donde apunta la cabecera (va a apuntar a donde me indicaba
+		el registro que voy a sobreescribir).

@@ -1,0 +1,6 @@
+1234 vegas javier 28 1111
+4321 lopez maria 74 2222
+6789 vegas emanuel 27 0
+9876 gonzales hugo 82 0
+4567 garcia hector 45 5555
+555 messi lionel 34 876

@@ -1,0 +1,15 @@
+111 100 samsung
+10 5 celu con tapita
+galaxy z flip
+222 200 nokia
+7 10 celu chiquito
+5200
+333 300 motorola
+20 10 smartphone
+g60
+444 400 xiaomi
+50 25 calidad precio
+K50
+555 500 huawei
+100 200 popular
+p30
